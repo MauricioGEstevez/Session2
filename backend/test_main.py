@@ -81,7 +81,7 @@ class TestAuthentication:
         # Access protected endpoint
         response = client.get(
             "/protected",
-            headers={"Authorization": f"******"}
+            headers={"Authorization": f"*** {access_token}"}
         )
         assert response.status_code == 200
         assert response.json()["username"] == "admin"

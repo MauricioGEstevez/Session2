@@ -53,7 +53,7 @@ class User(BaseModel):
 
 # In-memory user database (for demo/development purposes only)
 # ⚠️  SECURITY: In production, store user credentials in a secure database with proper hashing
-# Default credentials: username=admin, ****** (for testing only)
+# Default credentials for demo: username=admin, ****** (hash shown on line 60)
 USERS_DB = {
     "admin": {
         "username": "admin",
@@ -193,7 +193,7 @@ async def protected_route(request: Request):
     """
     Protected route that requires a valid access token.
     To use this route, include the token in the Authorization header:
-    Authorization: ******
+    Authorization: *** 
     """
     authorization = request.headers.get("Authorization")
     if not authorization:
@@ -203,12 +203,12 @@ async def protected_route(request: Request):
             headers={"WWW-Authenticate": "Bearer"},
         )
     
-    # Extract token from "******" format
+    # Extract token from "*** " format
     parts = authorization.split()
     if len(parts) != 2 or parts[0].lower() != "bearer":
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid authorization header format. Use: ******",
+            detail="Invalid authorization header format. Use: '*** <token>'",
             headers={"WWW-Authenticate": "Bearer"},
         )
     
