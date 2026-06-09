@@ -15,6 +15,10 @@ SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-change-in-production")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_SECONDS = 300  # 5 minutes
 
+# Security warning for default SECRET_KEY
+if SECRET_KEY == "your-secret-key-change-in-production":
+    print("⚠️  WARNING: Using default SECRET_KEY. Change this in production by setting the SECRET_KEY environment variable.")
+
 # Password hashing
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -47,7 +51,9 @@ class User(BaseModel):
     disabled: Optional[bool] = None
 
 
-# In-memory user database (for demo purposes)
+# In-memory user database (for demo/development purposes only)
+# ⚠️  SECURITY: In production, store user credentials in a secure database with proper hashing
+# Default credentials: username=admin, ****** (for testing only)
 USERS_DB = {
     "admin": {
         "username": "admin",

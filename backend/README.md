@@ -256,11 +256,25 @@ backend/
 ## Security Recommendations
 
 1. **Change the Secret Key**: In production, set a strong `SECRET_KEY` in the `.env` file
+   - The application will warn if using the default key
+   - Use a cryptographically secure key (e.g., `python -c "import secrets; print(secrets.token_urlsafe(32))"`)
+
 2. **Use HTTPS**: Always use HTTPS in production
-3. **Secure Credentials**: Never hardcode credentials in the application
+
+3. **Secure Credentials**: 
+   - **Demo Only**: Default credentials (admin/admin123) are hardcoded for demo purposes
+   - **Production**: Store user credentials in a secure database (PostgreSQL, MongoDB, etc.) with proper hashing
+   - Never hardcode credentials in the application source code
+
 4. **Token Rotation**: Implement token rotation mechanism
+
 5. **Rate Limiting**: Add rate limiting to prevent brute force attacks
+
 6. **CORS**: Configure CORS appropriately for your frontend
+
+7. **Input Validation**: Validate all inputs to prevent injection attacks
+
+8. **Logging & Monitoring**: Implement proper logging and monitoring for authentication events
 
 ## Development
 
