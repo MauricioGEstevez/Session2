@@ -176,11 +176,14 @@ This application provides:
      -d '{"username": "admin", "password": "admin123"}'
    ```
 
-2. **Save the access token**:
+2. **Save the tokens**:
    ```bash
-   export ACCESS_TOKEN=$(curl -s -X POST "http://localhost:8000/login" \
+   LOGIN_RESPONSE=$(curl -s -X POST "http://localhost:8000/login" \
      -H "Content-Type: application/json" \
-     -d '{"username": "admin", "password": "admin123"}' | jq -r '.access_token')
+     -d '{"username": "admin", "password": "admin123"}')
+   
+   export ACCESS_TOKEN=$(echo $LOGIN_RESPONSE | jq -r '.access_token')
+   export REFRESH_TOKEN=$(echo $LOGIN_RESPONSE | jq -r '.refresh_token')
    ```
 
 3. **Use the access token** (example with protected endpoint):
