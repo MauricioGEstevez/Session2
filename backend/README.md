@@ -189,7 +189,7 @@ This application provides:
 3. **Use the access token** (example with protected endpoint):
    ```bash
    curl -X GET "http://localhost:8000/protected" \
-     -H "Authorization: *** "
+     -H "Authorization: ******"
    ```
 
 4. **Refresh the token**:
