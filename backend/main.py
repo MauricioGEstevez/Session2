@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import FastAPI, Depends, HTTPException, status, Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from datetime import datetime, timedelta, timezone
@@ -183,15 +183,37 @@ async def refresh_token(request: RefreshTokenRequest):
 
 
 @app.get("/protected", tags=["Protected"])
-async def protected_route(token: str = Depends(lambda: None)):
+async def protected_route(request: Request):
     """
     Protected route that requires a valid access token.
     To use this route, include the token in the Authorization header:
     Authorization: ******
     """
-    # This is a simple protected endpoint for testing
-    # In a real application, you would extract the token from the Authorization header
-    return {"message": "This is a protected route"}
+    authorization = request.headers.get("Authorization")
+    if not authorization:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Authorization header missing",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    
+    # Extract token from "******" format
+    parts = authorization.split()
+    if len(parts) != 2 or parts[0].lower() != "bearer":
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid authorization header format. Use '******'",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    
+    token = parts[1]
+    payload = verify_token(token)
+    username = payload.get("sub")
+    
+    return {
+        "message": "This is a protected route",
+        "username": username
+    }
 
 
 @app.get("/health", tags=["Health"])
