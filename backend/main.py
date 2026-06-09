@@ -187,7 +187,7 @@ async def protected_route(request: Request):
     """
     Protected route that requires a valid access token.
     To use this route, include the token in the Authorization header:
-    Authorization: ******
+    Authorization: *** 
     """
     authorization = request.headers.get("Authorization")
     if not authorization:
@@ -202,7 +202,7 @@ async def protected_route(request: Request):
     if len(parts) != 2 or parts[0].lower() != "bearer":
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid authorization header format. Use '******'",
+            detail="Invalid authorization header format. Use: '*** <your_access_token>'",
             headers={"WWW-Authenticate": "Bearer"},
         )
     

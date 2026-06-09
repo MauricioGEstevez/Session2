@@ -50,13 +50,12 @@ This application provides:
    poetry install
    ```
 
-4. **Create `.env` file** (already included, but customize if needed):
+4. **Create `.env` file** (copy from `.env.example`):
    ```bash
-   cat > .env << EOF
-   SECRET_KEY=your-secret-key-change-in-production
-   DEBUG=True
-   EOF
+   cp .env.example .env
    ```
+   
+   You can customize the values in `.env` if needed for your environment.
 
 5. **Run the application**:
    ```bash
@@ -187,7 +186,7 @@ This application provides:
 3. **Use the access token** (example with protected endpoint):
    ```bash
    curl -X GET "http://localhost:8000/protected" \
-     -H "Authorization: ******"
+     -H "Authorization: *** "
    ```
 
 4. **Refresh the token**:
