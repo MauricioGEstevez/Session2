@@ -5,6 +5,23 @@
   padding: 64px 16px;
 }
 
+.page-shell.welcome-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 32px;
+  gap: 32px;
+}
+
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  align-items: center;
+}
+
 .card-shell {
   width: min(460px, 100%);
   padding: 1px;
@@ -32,6 +49,107 @@
   padding: 18px;
   display: grid;
   gap: 12px;
+}
+
+.certifications-section {
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 16px;
+}
+
+.certifications-section h2 {
+  text-align: center;
+  color: #0f172a;
+  font-size: 28px;
+  font-weight: 500;
+  margin: 0 0 24px 0;
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.certification-card {
+  padding: 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 200ms ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.certification-card h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.certification-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  flex-grow: 1;
+}
+
+.cert-link {
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.certification-green {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+  border-color: rgba(34, 197, 94, 0.3);
+  color: #166534;
+}
+
+.certification-green:hover {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.08));
+  border-color: rgba(34, 197, 94, 0.5);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15);
+}
+
+.certification-green h3 {
+  color: #15803d;
+}
+
+.certification-green p {
+  color: #166534;
+}
+
+.certification-green .cert-link {
+  color: #22c55e;
+}
+
+.certification-blue {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #1e40af;
+}
+
+.certification-blue:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.08));
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.certification-blue h3 {
+  color: #1e3a8a;
+}
+
+.certification-blue p {
+  color: #1e40af;
+}
+
+.certification-blue .cert-link {
+  color: #3b82f6;
 }
 
 h1 {
