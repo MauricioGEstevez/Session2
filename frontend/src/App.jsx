@@ -114,7 +114,7 @@ function WelcomePage() {
     {
       id: 3,
       title: 'Cloud and AI Security Engineer Associate',
-      description: 'SC-500 Certification (Formerly AZ-500)',
+      description: 'SC-500 Certification',
       link: 'https://learn.microsoft.com/en-us/credentials/certifications/exams/sc-500/',
       color: 'green'
     },
