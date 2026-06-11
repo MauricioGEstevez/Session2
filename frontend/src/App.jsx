@@ -96,15 +96,67 @@ function WelcomePage() {
     navigate('/login', { replace: true })
   }
 
+  const certifications = [
+    {
+      id: 1,
+      title: 'Collaboration Communications Systems Engineer Associate',
+      description: 'Microsoft 365 Certified',
+      link: 'https://learn.microsoft.com/en-us/credentials/certifications/m365-collaboration-communications-systems-engineer/',
+      color: 'green'
+    },
+    {
+      id: 2,
+      title: 'Copilot and Agent Administration Fundamentals',
+      description: 'Microsoft 365 Certified',
+      link: 'https://learn.microsoft.com/en-us/credentials/certifications/copilot-and-agent-administration-fundamentals/',
+      color: 'blue'
+    },
+    {
+      id: 3,
+      title: 'Cloud and AI Security Engineer Associate',
+      description: 'SC-500 Certification (Formerly AZ-500)',
+      link: 'https://learn.microsoft.com/en-us/credentials/certifications/exams/sc-500/',
+      color: 'green'
+    },
+    {
+      id: 4,
+      title: 'Cybersecurity Architect Expert',
+      description: 'SC-100 Certification',
+      link: 'https://learn.microsoft.com/en-us/credentials/certifications/exams/sc-100/',
+      color: 'blue'
+    }
+  ]
+
   return (
-    <main className="page-shell">
-      <section className="card-shell">
-        <div className="card-surface">
-          <h1>Bienvenido</h1>
-          <p className="subtitle">Tu sesión está activa correctamente.</p>
-          <button type="button" onClick={handleLogout}>
-            Cerrar sesión
-          </button>
+    <main className="page-shell welcome-page">
+      <section className="welcome-container">
+        <div className="card-shell">
+          <div className="card-surface">
+            <h1>Bienvenido</h1>
+            <p className="subtitle">Tu sesión está activa correctamente.</p>
+            <button type="button" onClick={handleLogout}>
+              Cerrar sesión
+            </button>
+          </div>
+        </div>
+
+        <div className="certifications-section">
+          <h2>Certificaciones Microsoft 2026</h2>
+          <div className="certifications-grid">
+            {certifications.map((cert) => (
+              <a
+                key={cert.id}
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`certification-card certification-${cert.color}`}
+              >
+                <h3>{cert.title}</h3>
+                <p>{cert.description}</p>
+                <span className="cert-link">Más información →</span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
     </main>
